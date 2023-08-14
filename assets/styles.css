@@ -45,3 +45,7 @@ a {
   color: white;
   border: none;
 }
+
+.start-button:hover {
+  filter: brightness(120%) drop-shadow(8px 8px 10px grey);
+}
