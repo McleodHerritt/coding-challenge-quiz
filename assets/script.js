@@ -7,6 +7,7 @@ var question = document.querySelector("#question");
 var highscore = document.querySelector("#highscore");
 var secondsLeft = 60;
 var currentQuestionIndex = 0;
+var score = 0;
 
 startButton.addEventListener("click", startQuiz);
 
@@ -23,6 +24,13 @@ button_4.addEventListener("click", handleButton);
 
 function handleButton(e) {
   var usersAnswer = e.target.textContent;
+  var correctAnswer = quizData[currentQuestionIndex].correctAnswer;
+  if (usersAnswer === correctAnswer) {
+    score++;
+  } else {
+    secondsLeft = secondsLeft - 10;
+  }
+
   loadQuestion(++currentQuestionIndex);
 }
 //created questions, options, and answers for quiz
