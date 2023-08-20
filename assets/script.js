@@ -2,12 +2,13 @@ var startButton = document.querySelector("#startButton");
 var splashScreen = document.getElementById("splashScreen");
 var quizScreen = document.getElementById("quiz");
 var timer = document.querySelector("#timer");
-var quizQuestions = document.querySelector("#quiz-questions");
+var quizQuestions = document.querySelector("#quizQuestions");
 var question = document.querySelector("#question");
 var highscore = document.querySelector("#highscore");
 var secondsLeft = 60;
 var currentQuestionIndex = 0;
 var score = 0;
+var userFeedback = document.getElementById("userFeedback");
 
 startButton.addEventListener("click", startQuiz);
 
@@ -27,8 +28,10 @@ function handleButton(e) {
   var correctAnswer = quizData[currentQuestionIndex].correctAnswer;
   if (usersAnswer === correctAnswer) {
     score++;
+    userFeedback.textContent = "Correct!";
   } else {
     secondsLeft = secondsLeft - 10;
+    userFeedback.textContent = "Wrong";
   }
 
   loadQuestion(++currentQuestionIndex);
@@ -75,8 +78,10 @@ function updateTimer() {
 }
 
 function startQuiz() {
+  userFeedback.textContent = "";
   splashScreen.style.display = "none";
   quizScreen.style.display = "block";
+
   startTimer();
   loadQuestion(currentQuestionIndex);
 }
