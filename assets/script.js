@@ -108,4 +108,5 @@ function startQuiz() {
 function gameOver() {
   quizScreen.style.display = "none";
   $("#submitHighScoreScreen").show();
+  $("#finalScore").text("Your final score is " + score);
 }
