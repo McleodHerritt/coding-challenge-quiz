@@ -25,8 +25,13 @@ var quizData = [
 
   {
     question: "What does this equation mean ? a != t .",
-    options: ["A is assinged t", "A and t are equal", "T is add to a"],
-    correctAnswer: "A is not equal to t",
+    options: [
+      "a is assinged to t",
+      "a and t are equal",
+      "t is added to a",
+      "a is not equal to t",
+    ],
+    correctAnswer: "a is not equal to t",
   },
 ];
 

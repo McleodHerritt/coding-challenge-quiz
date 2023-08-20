@@ -54,6 +54,28 @@ a {
   filter: brightness(120%) drop-shadow(8px 8px 10px grey);
 }
 /*styles answers for quiz*/
-.options {
+.option {
+  width: 50%;
+  padding: 0.25em;
+  margin-bottom: 1em;
+  border-radius: 30px;
+  background-color: plum;
+  border: none;
+  color: white;
+  font-size: 800;
+}
+
+.option:hover {
+  filter: brightness(110%) drop-shadow(8px 8px 10px rgb(241, 176, 222));
+}
+#question {
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding-bottom: 1em;
+}
+
+#options {
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
