@@ -33,7 +33,8 @@ function handleButton(e) {
     secondsLeft = secondsLeft - 10;
     userFeedback.textContent = "Wrong";
   }
-
+  $("#userFeedback").show();
+  $("#userFeedback").fadeOut(3000);
   loadQuestion(++currentQuestionIndex);
 }
 //created questions, options, and answers for quiz
