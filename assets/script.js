@@ -3,7 +3,7 @@ var splashScreen = document.getElementById("splashScreen");
 var quizScreen = document.getElementById("quiz");
 var timer = document.querySelector("#timer");
 var quizQuestions = document.querySelector("#quizQuestions");
-var question = document.querySelector("#question");
+var question = document.getElementById("question");
 var highscore = document.querySelector("#highscore");
 var secondsLeft = 60;
 var currentQuestionIndex = 0;
@@ -24,6 +24,10 @@ button_3.addEventListener("click", handleButton);
 button_4.addEventListener("click", handleButton);
 
 function handleButton(e) {
+  if (currentQuestionIndex > quizData.length - 1) {
+    gameOver();
+    return;
+  }
   var usersAnswer = e.target.textContent;
   var correctAnswer = quizData[currentQuestionIndex].correctAnswer;
   if (usersAnswer === correctAnswer) {
@@ -58,6 +62,10 @@ var quizData = [
 ];
 
 function loadQuestion(index) {
+  if (index > quizData.length - 1) {
+    gameOver();
+    return;
+  }
   const currentQuestion = quizData[index];
   question.textContent = currentQuestion.question;
 
@@ -75,6 +83,9 @@ function startTimer() {
 
 function updateTimer() {
   secondsLeft--;
+  if (secondsLeft < 0) {
+    gameOver();
+  }
   timer.textContent = "Time: " + secondsLeft;
 }
 
@@ -85,4 +96,8 @@ function startQuiz() {
 
   startTimer();
   loadQuestion(currentQuestionIndex);
+}
+
+function gameOver() {
+  console.log("gameOver");
 }
