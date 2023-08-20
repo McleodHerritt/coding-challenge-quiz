@@ -6,6 +6,7 @@ var quizQuestions = document.querySelector("#quiz-questions");
 var question = document.querySelector("#question");
 var highscore = document.querySelector("#highscore");
 var secondsLeft = 60;
+var currentQuestionIndex = 0;
 
 startButton.addEventListener("click", startQuiz);
 
@@ -21,8 +22,8 @@ button_3.addEventListener("click", handleButton);
 button_4.addEventListener("click", handleButton);
 
 function handleButton(e) {
-  var clickedButton = e.target.id;
-  console.log("click " + clickedButton);
+  var usersAnswer = e.target.textContent;
+  loadQuestion(++currentQuestionIndex);
 }
 //created questions, options, and answers for quiz
 var quizData = [
@@ -43,10 +44,6 @@ var quizData = [
     correctAnswer: "a is not equal to t",
   },
 ];
-
-loadQuestion(1);
-
-var currentQuestionIndex = 0;
 
 function loadQuestion(index) {
   const currentQuestion = quizData[index];
@@ -73,4 +70,5 @@ function startQuiz() {
   splashScreen.style.display = "none";
   quizScreen.style.display = "block";
   startTimer();
+  loadQuestion(currentQuestionIndex);
 }
