@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
-
+/* colours for the  design*/
 :root {
   --mountbatten-pink: #9e788fff;
   --glaucous: #7284a8ff;
@@ -7,36 +7,40 @@
   --charcoal: #474954ff;
   --ebony: #4b5842ff;
 }
-
+/*font style and size for design*/
 * {
   margin: 0;
   padding: 0;
   font-family: "Nanum Gothic", sans-serif;
   font-size: 115%;
 }
-
+/*display for header to allow for space between timer and high score*/
 header {
   display: flex;
   margin: 2em;
   justify-content: space-between;
 }
-
+/*displayes main screen center and styles it*/
 .splashscreen {
   text-align: center;
   margin: 2em;
 }
 
+.quiz {
+  display: none;
+}
+/*styles name of quiz*/
 h1 {
   margin: 2em;
   font-size: xx-large;
   font-weight: 800;
 }
-
+/*styles instructions of quiz*/
 p,
 a {
   margin: 0.5em;
 }
-
+/*give the start button style and changes color and border*/
 .start-button {
   margin: 2em;
   padding: 1em;
@@ -45,7 +49,11 @@ a {
   color: white;
   border: none;
 }
-
+/*gives the start button a shadow when the mouse is over it*/
 .start-button:hover {
   filter: brightness(120%) drop-shadow(8px 8px 10px grey);
+}
+/*styles answers for quiz*/
+.options {
+  display: flex;
 }
