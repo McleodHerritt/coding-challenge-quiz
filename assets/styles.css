@@ -68,7 +68,7 @@ a {
 .option:hover {
   filter: brightness(110%) drop-shadow(8px 8px 10px rgb(241, 176, 222));
 }
-#question {
+h2 {
   text-align: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   padding-bottom: 1em;
@@ -78,4 +78,8 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#submitHighScoreScreen {
+  display: none;
 }

@@ -10,18 +10,25 @@ var currentQuestionIndex = 0;
 var score = 0;
 var userFeedback = document.getElementById("userFeedback");
 
-startButton.addEventListener("click", startQuiz);
-
 //gets buttons from html for quiz answers
 var button_1 = document.getElementById("button_1");
 var button_2 = document.getElementById("button_2");
 var button_3 = document.getElementById("button_3");
 var button_4 = document.getElementById("button_4");
 
+startButton.addEventListener("click", startQuiz);
 button_1.addEventListener("click", handleButton);
 button_2.addEventListener("click", handleButton);
 button_3.addEventListener("click", handleButton);
 button_4.addEventListener("click", handleButton);
+
+$(document).ready(function () {
+  $("#enterHighScore").submit(handleSubmittingHighScore);
+});
+
+function handleSubmittingHighScore(e) {
+  e.preventDefault();
+}
 
 function handleButton(e) {
   if (currentQuestionIndex > quizData.length - 1) {
@@ -99,5 +106,6 @@ function startQuiz() {
 }
 
 function gameOver() {
-  console.log("gameOver");
+  quizScreen.style.display = "none";
+  $("#submitHighScoreScreen").show();
 }
