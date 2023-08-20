@@ -15,6 +15,15 @@ var button_2 = document.getElementById("button_2");
 var button_3 = document.getElementById("button_3");
 var button_4 = document.getElementById("button_4");
 
+button_1.addEventListener("click", handleButton);
+button_2.addEventListener("click", handleButton);
+button_3.addEventListener("click", handleButton);
+button_4.addEventListener("click", handleButton);
+
+function handleButton(e) {
+  var clickedButton = e.target.id;
+  console.log("click " + clickedButton);
+}
 //created questions, options, and answers for quiz
 var quizData = [
   {
