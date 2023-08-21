@@ -9,6 +9,7 @@ var secondsLeft = 60;
 var currentQuestionIndex = 0;
 var score = 0;
 var userFeedback = document.getElementById("userFeedback");
+var timerInterval = null;
 
 //gets buttons from html for quiz answers
 var button_1 = document.getElementById("button_1");
@@ -26,8 +27,18 @@ $(document).ready(function () {
   $("#enterHighScore").submit(handleSubmittingHighScore);
   $("#highscore").click(showHighScore);
   $("#clearHighscoreButton").click(clearHighScores);
+  $("#goBackButton").click(showSplashScreen);
 });
 
+function showSplashScreen() {
+  secondsLeft = 60;
+  timer.textContent = "Time: " + secondsLeft;
+  $("header").show();
+  $("#splashScreen").show();
+  $("#quiz").hide();
+  $("#submitHighScoreScreen").hide();
+  $("#highScoreScreen").hide();
+}
 function clearHighScores() {
   localStorage.clear();
   showHighScore();
@@ -123,15 +134,16 @@ function loadQuestion(index) {
 function checkAnswer() {}
 function startTimer() {
   // Sets interval in variable
-  var timerInterval = setInterval(updateTimer, 1000);
+  timerInterval = setInterval(updateTimer, 1000);
 }
 
 function updateTimer() {
-  secondsLeft--;
-  if (secondsLeft < 0) {
+  if (secondsLeft <= 0) {
     gameOver();
+  } else {
+    secondsLeft--;
+    timer.textContent = "Time: " + secondsLeft;
   }
-  timer.textContent = "Time: " + secondsLeft;
 }
 
 function startQuiz() {
@@ -144,7 +156,9 @@ function startQuiz() {
 }
 
 function gameOver() {
+  clearInterval(timerInterval);
   quizScreen.style.display = "none";
   $("#submitHighScoreScreen").show();
   $("#finalScore").text("Your final score is " + score);
+  $("#highScoreScreen").hide();
 }
