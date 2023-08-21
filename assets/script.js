@@ -25,7 +25,13 @@ button_4.addEventListener("click", handleButton);
 $(document).ready(function () {
   $("#enterHighScore").submit(handleSubmittingHighScore);
   $("#highscore").click(showHighScore);
+  $("#clearHighscoreButton").click(clearHighScores);
 });
+
+function clearHighScores() {
+  localStorage.clear();
+  showHighScore();
+}
 
 function showHighScore() {
   $("header").hide();
