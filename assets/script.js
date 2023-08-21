@@ -25,10 +25,6 @@ button_4.addEventListener("click", handleButton);
 $(document).ready(function () {
   $("#enterHighScore").submit(handleSubmittingHighScore);
   $("#highscore").click(showHighScore);
-  var highscores = JSON.parse(localStorage.getItem("highScores")) || [];
-  if (highscores == 0) {
-    $("#highScoreContainer").text("No High Scores Yet!");
-  }
 });
 
 function showHighScore() {
@@ -37,16 +33,33 @@ function showHighScore() {
   $("#quiz").hide();
   $("#submitHighScoreScreen").hide();
   $("#highScoreScreen").show();
+  displayHighScores();
+}
+function displayHighScores() {
+  var highScoreContainer = document.getElementById("highScoreContainer");
+  highScoreContainer.innerHTML = "";
+  var highscores = JSON.parse(localStorage.getItem("highScores")) || [];
+  if (highscores == 0) {
+    $("#highScoreContainer").text("No High Scores Yet!");
+  }
+  highscores.forEach((entry) => {
+    var scoreElement = document.createElement("div");
+    scoreElement.classList.add("highScoreEntry");
+    scoreElement.textContent = "" + entry.initials + ": " + entry.score;
+    highScoreContainer.appendChild(scoreElement);
+  });
 }
 
 function handleSubmittingHighScore(e) {
   e.preventDefault();
   var highscores = JSON.parse(localStorage.getItem("highScores")) || [];
-  var highScoreContainer = document.getElementById("highScoreContainer");
-  highScoreContainer.innerHTML = "";
-  if (highscores === 0) {
-    highScoreContainer.textContent = "No High Scores Yet!";
-  }
+  var initials = $("#initials").val();
+  console.log("initials: " + initials);
+  var newScore = { initials: initials, score: score };
+  highscores.push(newScore);
+  highscores.sort((a, b) => b.score - a.score);
+  highscores = highscores.slice(0, 10);
+  localStorage.setItem("highScores", JSON.stringify(highscores));
 }
 
 function handleButton(e) {
