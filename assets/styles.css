@@ -1,5 +1,7 @@
+/* Importing Nanum Gothic font from Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
-/* colours for the  design*/
+
+/* Defining custom color variables for use throughout the design */
 :root {
   --mountbatten-pink: #9e788fff;
   --glaucous: #7284a8ff;
@@ -7,20 +9,24 @@
   --charcoal: #474954ff;
   --ebony: #4b5842ff;
 }
-/*font style and size for design*/
+
+/* Global styles: Reset margin and padding, set default font and size */
 * {
   margin: 0;
   padding: 0;
   font-family: "Nanum Gothic", sans-serif;
   font-size: 115%;
 }
-/*display for header to allow for space between timer and high score*/
+
+/* Styling for the header, with flexbox for layout */
 header {
   display: flex;
   margin: 2em;
   justify-content: space-between;
   align-items: start;
 }
+
+/* Styling the highscore button, including hover effect */
 #highscore {
   padding: 0.5em 1em;
   margin-top: 2.5%;
@@ -34,27 +40,32 @@ header {
 #highscore:hover {
   filter: brightness(150%);
 }
-/*displayes main screen center and styles it*/
+
+/* Centering the splash screen content */
 .splashscreen {
   text-align: center;
   margin: 2em;
 }
 
+/* Initial hiding of the quiz screen */
 .quiz {
   display: none;
 }
-/*styles name of quiz*/
+
+/* Styling the main quiz name */
 h1 {
   margin: 2em;
   font-size: xx-large;
   font-weight: 800;
 }
-/*styles instructions of quiz*/
+
+/* Styling for the generic text and links in the quiz */
 p,
 a {
   margin: 0.5em;
 }
-/*give the start button style and changes color and border*/
+
+/* Styling the start button, including hover effect */
 .start-button {
   margin: 2em;
   padding: 1em;
@@ -63,11 +74,13 @@ a {
   color: white;
   border: none;
 }
+
 /*gives the start button a shadow when the mouse is over it*/
 .start-button:hover {
   filter: brightness(120%) drop-shadow(8px 8px 10px grey);
 }
-/*styles answers for quiz*/
+
+/* Styling for the option (answer) buttons, including hover effect */
 .option {
   width: 50%;
   padding: 0.25em;
@@ -82,24 +95,29 @@ a {
 .option:hover {
   filter: brightness(110%) drop-shadow(8px 8px 10px rgb(241, 176, 222));
 }
+
+/* Styling for subheading, specifically align and font */
 h2 {
   text-align: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   padding-bottom: 1em;
 }
 
+/* Aligning the options in the center with flexbox */
 #options {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* Styling for the final score announcement */
 #finalScore {
   text-align: center;
   font-weight: bolder;
   font-style: italic;
 }
 
+/* Styling for the high score submission form */
 #enterHighScore {
   text-align: center;
   color: var(--ebony);
@@ -118,14 +136,13 @@ h2 {
   filter: brightness(120%);
 }
 
-#submitHighScoreScreen {
-  display: none;
-}
-
+/* Hiding the score submission and high score screens by default */
+#submitHighScoreScreen,
 #highScoreScreen {
   display: none;
 }
 
+/* Styling for buttons used within the high score section */
 .highScoreButtons {
   display: flex;
   justify-content: space-evenly;
@@ -143,10 +160,13 @@ h2 {
 .highScoreButton:hover {
   filter: brightness(120%);
 }
+
+/* Larger font size for the high score screen heading */
 #highScoreScreen h2 {
   font-size: 150%;
 }
 
+/* Layout for displaying high scores */
 #highScoreContainer {
   display: flex;
   flex-direction: column;
