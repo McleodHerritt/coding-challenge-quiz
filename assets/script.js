@@ -31,7 +31,8 @@ function showHighScore() {
   $("header").hide();
   $("#splashScreen").hide();
   $("#quiz").hide();
-  $("highScoreScreen").show();
+  $("#submitHighScoreScreen").hide();
+  $("#highScoreScreen").show();
 }
 
 function handleSubmittingHighScore(e) {

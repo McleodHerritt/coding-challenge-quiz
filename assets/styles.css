@@ -122,6 +122,27 @@ h2 {
   display: none;
 }
 
-#higScoreScreen {
+#highScoreScreen {
   display: none;
+}
+
+.highScoreButtons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.highScoreButton {
+  padding: 0.25em;
+  border-radius: 30px;
+  background-color: var(--mint);
+  color: aliceblue;
+  font-size: 90%;
+  border: none;
+}
+
+.highScoreButton:hover {
+  filter: brightness(120%);
+}
+#highScoreScreen h2 {
+  font-size: 150%;
 }
