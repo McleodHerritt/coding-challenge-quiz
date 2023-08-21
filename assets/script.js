@@ -24,7 +24,15 @@ button_4.addEventListener("click", handleButton);
 
 $(document).ready(function () {
   $("#enterHighScore").submit(handleSubmittingHighScore);
+  $("#highscore").click(showHighScore);
 });
+
+function showHighScore() {
+  $("header").hide();
+  $("#splashScreen").hide();
+  $("#quiz").hide();
+  $("highScoreScreen").show();
+}
 
 function handleSubmittingHighScore(e) {
   e.preventDefault();

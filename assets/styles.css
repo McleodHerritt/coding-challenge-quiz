@@ -121,3 +121,7 @@ h2 {
 #submitHighScoreScreen {
   display: none;
 }
+
+#higScoreScreen {
+  display: none;
+}
