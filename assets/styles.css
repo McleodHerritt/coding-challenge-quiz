@@ -146,3 +146,9 @@ h2 {
 #highScoreScreen h2 {
   font-size: 150%;
 }
+
+#highScoreContainer {
+  display: flex;
+  margin: 1em;
+  justify-content: center;
+}

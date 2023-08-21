@@ -25,6 +25,10 @@ button_4.addEventListener("click", handleButton);
 $(document).ready(function () {
   $("#enterHighScore").submit(handleSubmittingHighScore);
   $("#highscore").click(showHighScore);
+  var highscores = JSON.parse(localStorage.getItem("highScores")) || [];
+  if (highscores == 0) {
+    $("#highScoreContainer").text("No High Scores Yet!");
+  }
 });
 
 function showHighScore() {
@@ -37,6 +41,12 @@ function showHighScore() {
 
 function handleSubmittingHighScore(e) {
   e.preventDefault();
+  var highscores = JSON.parse(localStorage.getItem("highScores")) || [];
+  var highScoreContainer = document.getElementById("highScoreContainer");
+  highScoreContainer.innerHTML = "";
+  if (highscores === 0) {
+    highScoreContainer.textContent = "No High Scores Yet!";
+  }
 }
 
 function handleButton(e) {
