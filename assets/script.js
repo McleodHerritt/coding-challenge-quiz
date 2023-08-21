@@ -100,6 +100,7 @@ function handleButton(e) {
   loadQuestion(++currentQuestionIndex);
 }
 //created questions, options, and answers for quiz
+
 var quizData = [
   {
     question: "A short sections of code written to complete a task.",
@@ -116,6 +117,63 @@ var quizData = [
       "a is not equal to t",
     ],
     correctAnswer: "a is not equal to t",
+  },
+  {
+    question:
+      "Which HTML element is used to specify a footer for a document or section?",
+    options: ["<section>", "<bottom>", "<footer>", "<div>"],
+    correctAnswer: "<footer>",
+  },
+
+  {
+    question:
+      "In CSS, which property is used to set the background color of an element?",
+    options: ["color", "background-color", "bgcolor", "bgColor"],
+    correctAnswer: "background-color",
+  },
+
+  {
+    question:
+      "Which JavaScript method is used to get the value of a form element?",
+    options: [
+      "getElementValue()",
+      "getValue()",
+      "getElementById().value",
+      "form.value",
+    ],
+    correctAnswer: "getElementById().value",
+  },
+
+  {
+    question: "Which of the following is not a valid JavaScript variable name?",
+    options: ["_firstVar", "2ndVar", "firstVar", "first_Var"],
+    correctAnswer: "2ndVar",
+  },
+
+  {
+    question: "Which CSS property controls the space between lines of text?",
+    options: ["spacing", "line-height", "line-spacing", "text-line"],
+    correctAnswer: "line-height",
+  },
+
+  {
+    question:
+      "Which HTML attribute is used to specify the alternative text for an image, in case it cannot be displayed?",
+    options: ["src", "alt", "description", "caption"],
+    correctAnswer: "alt",
+  },
+
+  {
+    question:
+      "In JavaScript, how would you write a conditional statement that checks if 'i' is NOT equal to 5?",
+    options: ["if (i !== 5)", "if i != 5", "if i <> 5", "if (i != 5)"],
+    correctAnswer: "if (i !== 5)",
+  },
+
+  {
+    question: "Which CSS property sets the size of the font?",
+    options: ["text-size", "font-size", "font-style", "text-style"],
+    correctAnswer: "font-size",
   },
 ];
 
