@@ -77,6 +77,8 @@ function handleSubmittingHighScore(e) {
   highscores.sort((a, b) => b.score - a.score);
   highscores = highscores.slice(0, 10);
   localStorage.setItem("highScores", JSON.stringify(highscores));
+
+  showHighScore();
 }
 
 function handleButton(e) {
