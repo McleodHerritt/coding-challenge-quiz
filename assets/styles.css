@@ -19,6 +19,20 @@ header {
   display: flex;
   margin: 2em;
   justify-content: space-between;
+  align-items: start;
+}
+#highscore {
+  padding: 0.5em 1em;
+  margin-top: 2.5%;
+  border-radius: 20px 30px;
+  background-color: var(--mountbatten-pink);
+  color: white;
+  border: black;
+  font-size: 75%;
+}
+
+#highscore:hover {
+  filter: brightness(150%);
 }
 /*displayes main screen center and styles it*/
 .splashscreen {
