@@ -1,3 +1,4 @@
+// DOM elements for various sections and controls in the quiz
 var startButton = document.querySelector("#startButton");
 var splashScreen = document.getElementById("splashScreen");
 var quizScreen = document.getElementById("quiz");
@@ -5,24 +6,37 @@ var timer = document.querySelector("#timer");
 var quizQuestions = document.querySelector("#quizQuestions");
 var question = document.getElementById("question");
 var highscore = document.querySelector("#highscore");
-var secondsLeft = 60;
+
+// Quiz timer configuration
+var allowedTime = 90;
+var secondsLeft = allowedTime;
+
+// Index to keep track of the current question
 var currentQuestionIndex = 0;
+
+// Variable to store user's score
 var score = 0;
+
+// Feedback for the user's answer
 var userFeedback = document.getElementById("userFeedback");
+
+// Interval for the quiz timer
 var timerInterval = null;
 
-//gets buttons from html for quiz answers
+// DOM elements for answer buttons
 var button_1 = document.getElementById("button_1");
 var button_2 = document.getElementById("button_2");
 var button_3 = document.getElementById("button_3");
 var button_4 = document.getElementById("button_4");
 
+// Event listeners for starting the quiz and handling answer button clicks
 startButton.addEventListener("click", startQuiz);
 button_1.addEventListener("click", handleButton);
 button_2.addEventListener("click", handleButton);
 button_3.addEventListener("click", handleButton);
 button_4.addEventListener("click", handleButton);
 
+// Event listeners for handling high scores and related actions
 $(document).ready(function () {
   $("#enterHighScore").submit(handleSubmittingHighScore);
   $("#highscore").click(showHighScore);
@@ -30,8 +44,9 @@ $(document).ready(function () {
   $("#goBackButton").click(showSplashScreen);
 });
 
+// Function to show the initial splash screen
 function showSplashScreen() {
-  secondsLeft = 60;
+  secondsLeft = allowedTime;
   timer.textContent = "Time: " + secondsLeft;
   $("header").show();
   $("#splashScreen").show();
@@ -39,11 +54,14 @@ function showSplashScreen() {
   $("#submitHighScoreScreen").hide();
   $("#highScoreScreen").hide();
 }
+
+// Function to clear stored high scores
 function clearHighScores() {
   localStorage.clear();
   showHighScore();
 }
 
+// Function to display the high score screen
 function showHighScore() {
   $("header").hide();
   $("#splashScreen").hide();
@@ -52,6 +70,8 @@ function showHighScore() {
   $("#highScoreScreen").show();
   displayHighScores();
 }
+
+// Function to fetch and display stored high scores
 function displayHighScores() {
   var highScoreContainer = document.getElementById("highScoreContainer");
   highScoreContainer.innerHTML = "";
@@ -67,6 +87,7 @@ function displayHighScores() {
   });
 }
 
+// Function to handle user submission of high scores
 function handleSubmittingHighScore(e) {
   e.preventDefault();
   var highscores = JSON.parse(localStorage.getItem("highScores")) || [];
@@ -81,6 +102,7 @@ function handleSubmittingHighScore(e) {
   showHighScore();
 }
 
+// Function to handle user's answer to a question
 function handleButton(e) {
   if (currentQuestionIndex > quizData.length - 1) {
     gameOver();
@@ -99,8 +121,8 @@ function handleButton(e) {
   $("#userFeedback").fadeOut(3000);
   loadQuestion(++currentQuestionIndex);
 }
-//created questions, options, and answers for quiz
 
+// Array containing questions, options, and answers for the quiz
 var quizData = [
   {
     question: "A short sections of code written to complete a task.",
@@ -177,6 +199,7 @@ var quizData = [
   },
 ];
 
+// Function to display a question and its options
 function loadQuestion(index) {
   if (index > quizData.length - 1) {
     gameOver();
@@ -190,13 +213,14 @@ function loadQuestion(index) {
   button_3.textContent = currentQuestion.options[2];
   button_4.textContent = currentQuestion.options[3];
 }
-// chooses if the answer is correct or if the answer is wrong and what to do following
-function checkAnswer() {}
+
+// Function to start the quiz timer
 function startTimer() {
   // Sets interval in variable
   timerInterval = setInterval(updateTimer, 1000);
 }
 
+// Function to update the timer on screen
 function updateTimer() {
   if (secondsLeft <= 0) {
     gameOver();
@@ -206,6 +230,7 @@ function updateTimer() {
   }
 }
 
+// Function to start the quiz
 function startQuiz() {
   userFeedback.textContent = "";
   splashScreen.style.display = "none";
@@ -215,6 +240,7 @@ function startQuiz() {
   loadQuestion(currentQuestionIndex);
 }
 
+// Function to end the quiz
 function gameOver() {
   clearInterval(timerInterval);
   quizScreen.style.display = "none";
